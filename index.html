@@ -612,21 +612,53 @@
       background: var(--dark-brown);
       position: relative;
       overflow: hidden;
+      padding: 0;
     }
 
-    .gate::before {
+    .gate__layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 80vh;
+    }
+
+    .gate__image-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gate__image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.85);
+      transition: filter 0.8s ease;
+    }
+
+    .gate__image-wrap:hover .gate__image {
+      filter: brightness(0.95);
+    }
+
+    .gate__image-wrap::after {
       content: '';
       position: absolute;
       inset: 0;
-      background:
-        radial-gradient(ellipse at 50% 0%, rgba(201, 168, 76, 0.04) 0%, transparent 60%),
-        radial-gradient(ellipse at 50% 100%, rgba(201, 168, 76, 0.03) 0%, transparent 60%);
+      background: linear-gradient(to right, transparent 60%, var(--dark-brown) 100%);
       pointer-events: none;
+    }
+
+    .gate__content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 5rem 4rem;
+      position: relative;
+      z-index: 1;
     }
 
     .gate__inner {
       text-align: center;
-      max-width: 640px;
+      max-width: 480px;
       margin: 0 auto;
       position: relative;
       z-index: 1;
@@ -1135,6 +1167,22 @@
       .details__grid {
         grid-template-columns: 1fr;
       }
+
+      .gate__layout {
+        grid-template-columns: 1fr;
+      }
+
+      .gate__image-wrap {
+        height: 50vh;
+      }
+
+      .gate__image-wrap::after {
+        background: linear-gradient(to bottom, transparent 50%, var(--dark-brown) 100%);
+      }
+
+      .gate__content {
+        padding: 4rem 3rem;
+      }
     }
 
     /* ===== RESPONSIVE: SMARTPHONE ===== */
@@ -1224,6 +1272,14 @@
 
       .gate__step-arrow {
         transform: rotate(90deg);
+      }
+
+      .gate__image-wrap {
+        height: 40vh;
+      }
+
+      .gate__content {
+        padding: 3rem 1.5rem;
       }
 
       .gate__subtitle br {
@@ -1555,66 +1611,86 @@
   </section>
 
   <!-- ===== SPEAKEASY GATE ===== -->
-  <section id="gate" class="gate section">
-    <div class="gate__inner reveal">
-      <!-- Keyhole icon -->
-      <div class="gate__icon">
-        <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="24" cy="18" r="10"/>
-          <path d="M20 26 L18 44 L30 44 L28 26" stroke-linejoin="round"/>
-          <circle cx="24" cy="18" r="4"/>
-        </svg>
-      </div>
-
-      <h2 class="gate__title">Find the Password</h2>
-
-      <p class="gate__subtitle">
-        この場所は、選ばれた者だけが辿り着ける。<br>
-        SNSに潜む「謎」を解読し、合言葉を手に入れた者だけが、<br>
-        秘密の扉を開くことができる。
-      </p>
-
-      <!-- Steps -->
-      <div class="gate__steps">
-        <div class="gate__step">
-          <span class="gate__step-num">1</span>
-          SNSで謎を発見
-        </div>
-        <span class="gate__step-arrow">&rarr;</span>
-        <div class="gate__step">
-          <span class="gate__step-num">2</span>
-          合言葉を解読
-        </div>
-        <span class="gate__step-arrow">&rarr;</span>
-        <div class="gate__step">
-          <span class="gate__step-num">3</span>
-          扉を開く
-        </div>
-      </div>
-
-      <!-- Password form -->
-      <div class="gate__form">
-        <div class="gate__input-wrap" id="inputWrap">
-          <input
-            type="text"
-            class="gate__input"
-            id="passwordInput"
-            placeholder="Enter the password"
-            autocomplete="off"
-            spellcheck="false"
+  <section id="gate" class="gate">
+    <div class="gate__layout">
+      <!-- Door handle image -->
+      <div class="gate__image-wrap">
+        <picture>
+          <source srcset="images/door-handle.webp" type="image/webp" />
+          <img
+            class="gate__image"
+            src="images/door-handle.png"
+            alt="秘密の扉"
+            loading="lazy"
+            width="2048"
+            height="2048"
           />
-          <button class="gate__submit" id="submitBtn" aria-label="送信">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
-        </div>
-        <p class="gate__error" id="errorMsg">合言葉が違います。もう一度、謎と向き合え。</p>
+        </picture>
       </div>
 
-      <p class="gate__hint">
-        ※ 公式SNSをフォローして、最新の謎に挑戦してください
-      </p>
+      <!-- Form content -->
+      <div class="gate__content">
+        <div class="gate__inner reveal">
+          <!-- Keyhole icon -->
+          <div class="gate__icon">
+            <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="18" r="10"/>
+              <path d="M20 26 L18 44 L30 44 L28 26" stroke-linejoin="round"/>
+              <circle cx="24" cy="18" r="4"/>
+            </svg>
+          </div>
+
+          <h2 class="gate__title">Find the Password</h2>
+
+          <p class="gate__subtitle">
+            この場所は、選ばれた者だけが辿り着ける。<br>
+            SNSに潜む「謎」を解読し、合言葉を手に入れた者だけが、<br>
+            秘密の扉を開くことができる。
+          </p>
+
+          <!-- Steps -->
+          <div class="gate__steps">
+            <div class="gate__step">
+              <span class="gate__step-num">1</span>
+              SNSで謎を発見
+            </div>
+            <span class="gate__step-arrow">&rarr;</span>
+            <div class="gate__step">
+              <span class="gate__step-num">2</span>
+              合言葉を解読
+            </div>
+            <span class="gate__step-arrow">&rarr;</span>
+            <div class="gate__step">
+              <span class="gate__step-num">3</span>
+              扉を開く
+            </div>
+          </div>
+
+          <!-- Password form -->
+          <div class="gate__form">
+            <div class="gate__input-wrap" id="inputWrap">
+              <input
+                type="text"
+                class="gate__input"
+                id="passwordInput"
+                placeholder="Enter the password"
+                autocomplete="off"
+                spellcheck="false"
+              />
+              <button class="gate__submit" id="submitBtn" aria-label="送信">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+            <p class="gate__error" id="errorMsg">合言葉が違います。もう一度、謎と向き合え。</p>
+          </div>
+
+          <p class="gate__hint">
+            ※ 公式SNSをフォローして、最新の謎に挑戦してください
+          </p>
+        </div>
+      </div>
     </div>
   </section>
 
