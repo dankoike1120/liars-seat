@@ -87,13 +87,13 @@
     .hero__title-wrap {
       display: none;
       position: absolute;
-      bottom: 18vh;
+      top: 50%;
       left: 0;
       right: 0;
       z-index: 2;
       text-align: center;
       padding: 0 2rem;
-      animation: heroFadeIn 1.5s ease 0.3s both;
+      animation: titleFadeIn 1.5s ease 0.3s both;
     }
 
     .hero__title-label {
@@ -1010,6 +1010,17 @@
       }
     }
 
+    @keyframes titleFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(calc(-50% + 20px));
+      }
+      to {
+        opacity: 1;
+        transform: translateY(-50%);
+      }
+    }
+
     @keyframes pulse {
       0%, 100% { opacity: 1; }
       50% { opacity: 0.5; }
@@ -1074,9 +1085,6 @@
 
       .hero__title-wrap {
         display: block;
-        bottom: auto;
-        top: 50%;
-        transform: translateY(-50%);
       }
 
       .section {
