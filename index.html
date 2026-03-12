@@ -83,8 +83,9 @@
       pointer-events: none;
     }
 
-    /* Hero title overlay */
+    /* Hero title overlay (SP only) */
     .hero__title-wrap {
+      display: none;
       position: absolute;
       bottom: 18vh;
       left: 0;
@@ -1068,6 +1069,10 @@
       }
 
       .hero__kv--sp {
+        display: block;
+      }
+
+      .hero__title-wrap {
         display: block;
       }
 
