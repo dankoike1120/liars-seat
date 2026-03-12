@@ -49,6 +49,12 @@
     .hero__kv {
       width: 100%;
       height: 100vh;
+      display: block;
+    }
+
+    .hero__kv img {
+      width: 100%;
+      height: 100vh;
       object-fit: cover;
       object-position: center;
       display: block;
@@ -69,30 +75,12 @@
         to bottom,
         rgba(10, 10, 10, 0.15) 0%,
         rgba(10, 10, 10, 0) 30%,
-        rgba(10, 10, 10, 0) 60%,
-        rgba(10, 10, 10, 0.85) 100%
+        rgba(10, 10, 10, 0) 45%,
+        rgba(10, 10, 10, 0.6) 65%,
+        rgba(10, 10, 10, 0.95) 85%,
+        rgba(10, 10, 10, 1) 100%
       );
       pointer-events: none;
-    }
-
-    .hero__content {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      z-index: 2;
-    }
-
-    .hero__scroll {
-      display: inline-block;
-      color: var(--gold);
-      font-family: 'Cinzel', serif;
-      font-size: 0.75rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      text-decoration: none;
-      animation: heroFadeIn 1.5s ease 1s both, pulse 2s ease-in-out infinite 2.5s;
     }
 
     /* Scroll down indicator at bottom */
@@ -107,7 +95,17 @@
       align-items: center;
       gap: 0.8rem;
       text-decoration: none;
-      animation: heroFadeIn 1.5s ease 2s both;
+      animation: heroFadeIn 1.5s ease 1s both;
+    }
+
+    .hero__scroll-text {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+      animation: pulse 2s ease-in-out infinite 2.5s;
     }
 
     .hero__scroll-label {
@@ -959,11 +957,11 @@
     @keyframes heroFadeIn {
       from {
         opacity: 0;
-        transform: translate(-50%, -50%) translateY(20px);
+        transform: translateX(-50%) translateY(20px);
       }
       to {
         opacity: 1;
-        transform: translate(-50%, -50%) translateY(0);
+        transform: translateX(-50%) translateY(0);
       }
     }
 
@@ -1027,10 +1025,6 @@
 
       .hero__kv--sp {
         display: block;
-      }
-
-      .hero__scroll {
-        font-size: 0.65rem;
       }
 
       .section {
@@ -1154,23 +1148,17 @@
 
   <!-- ===== HERO: KEY VISUAL ===== -->
   <section class="hero">
-    <picture>
-      <img
-        class="hero__kv hero__kv--pc"
-        src="Key Visual PC _liars_seat_pc_key_visual_v3.png"
-        alt="LIAR'S SEAT Key Visual"
-      />
-      <img
-        class="hero__kv hero__kv--sp"
-        src="Key Visual SP_liars_seat_05_conceptual_art_v2 (1).png"
-        alt="LIAR'S SEAT Key Visual"
-      />
+    <picture class="hero__kv hero__kv--pc">
+      <source srcset="images/kv-pc.webp" type="image/webp" />
+      <img src="images/kv-pc.png" alt="LIAR'S SEAT Key Visual" width="1920" height="815" />
+    </picture>
+    <picture class="hero__kv hero__kv--sp">
+      <source srcset="images/kv-sp.webp" type="image/webp" />
+      <img src="images/kv-sp.png" alt="LIAR'S SEAT Key Visual" width="828" height="1484" />
     </picture>
     <div class="hero__overlay"></div>
-    <div class="hero__content">
-      <a href="#intro" class="hero__scroll">Discover the Truth</a>
-    </div>
     <a href="#intro" class="hero__scroll-down">
+      <span class="hero__scroll-text">Discover the Truth</span>
       <span class="hero__scroll-label">Scroll</span>
       <div class="hero__scroll-mouse"></div>
       <div class="hero__scroll-chevron">
@@ -1196,11 +1184,17 @@
         </p>
       </div>
       <div class="intro__image-wrap reveal">
-        <img
-          class="intro__image"
-          src="liars_seat_01_noren_entrance_v2.png"
-          alt="隠れ家への入口"
-        />
+        <picture>
+          <source srcset="images/noren-entrance.webp" type="image/webp" />
+          <img
+            class="intro__image"
+            src="images/noren-entrance.png"
+            alt="隠れ家への入口"
+            loading="lazy"
+            width="800"
+            height="1434"
+          />
+        </picture>
       </div>
     </div>
   </section>
@@ -1209,11 +1203,17 @@
   <section class="concept">
     <div class="concept__inner">
       <div class="concept__image-wrap">
-        <img
-          class="concept__image"
-          src="liars_seat_02_bar_counter_v2.png"
-          alt="バーカウンター"
-        />
+        <picture>
+          <source srcset="images/bar-counter.webp" type="image/webp" />
+          <img
+            class="concept__image"
+            src="images/bar-counter.png"
+            alt="バーカウンター"
+            loading="lazy"
+            width="1920"
+            height="1073"
+          />
+        </picture>
       </div>
       <div class="concept__content reveal">
         <p class="section__label">Concept</p>
@@ -1238,7 +1238,10 @@
   <!-- ===== STORIES: CHOOSE YOUR STORY ===== -->
   <section class="stories">
     <div class="stories__bg">
-      <img src="liars_seat_03_whisky_drink.png" alt="" aria-hidden="true" />
+      <picture>
+        <source srcset="images/whisky-drink.webp" type="image/webp" />
+        <img src="images/whisky-drink.png" alt="" aria-hidden="true" loading="lazy" width="1200" height="1488" />
+      </picture>
     </div>
     <div class="stories__inner">
       <div class="stories__header reveal">
