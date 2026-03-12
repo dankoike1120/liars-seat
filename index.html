@@ -83,6 +83,50 @@
       pointer-events: none;
     }
 
+    /* Hero title overlay */
+    .hero__title-wrap {
+      position: absolute;
+      bottom: 18vh;
+      left: 0;
+      right: 0;
+      z-index: 2;
+      text-align: center;
+      padding: 0 2rem;
+      animation: heroFadeIn 1.5s ease 0.3s both;
+    }
+
+    .hero__title-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .hero__title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2.4rem, 8vw, 4.5rem);
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: #fff8e0;
+      text-shadow:
+        0 0 10px rgba(255, 248, 224, 0.6),
+        0 0 30px rgba(240, 216, 120, 0.4),
+        0 0 60px rgba(201, 168, 76, 0.3),
+        0 4px 12px rgba(0, 0, 0, 1);
+      margin-bottom: 1rem;
+    }
+
+    .hero__title-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(0.82rem, 1.8vw, 1.1rem);
+      font-weight: 300;
+      font-style: italic;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+    }
+
     /* Scroll down indicator at bottom */
     .hero__scroll-down {
       position: absolute;
@@ -1157,6 +1201,11 @@
       <img src="images/kv-sp.png" alt="LIAR'S SEAT Key Visual" width="828" height="1484" />
     </picture>
     <div class="hero__overlay"></div>
+    <div class="hero__title-wrap">
+      <p class="hero__title-label">Immersive Bar Entertainment</p>
+      <h1 class="hero__title">LIAR'S SEAT</h1>
+      <p class="hero__title-tagline">Everyone who sits here has something to hide.</p>
+    </div>
     <a href="#intro" class="hero__scroll-down">
       <span class="hero__scroll-text">Discover the Truth</span>
       <span class="hero__scroll-label">Scroll</span>
